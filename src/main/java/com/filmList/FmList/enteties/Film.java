@@ -22,15 +22,19 @@ public class Film {
 	private Integer year;
 	private String genre;
 	private String imgUrl;
-	private Integer duration;
+	private Double duration;
+	
+	@Column(columnDefinition = "Text")
 	private String shortDescription;
+	
+	@Column(columnDefinition = "Text")
 	private String longDescription;
 	
 	public Film() {
 }
 
 	//Construtores
-	public Film(Long id, String title, Integer year, String genre, String imgUrl, Integer duration,
+	public Film(Long id, String title, Integer year, String genre, String imgUrl, Double duration,
 			String shortDescription, String longDescription) {
 		this.id = id;
 		this.title = title;
@@ -83,11 +87,11 @@ public class Film {
 		this.imgUrl = imgUrl;
 	}
 
-	public Integer getDuration() {
+	public Double getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Integer duration) {
+	public void setDuration(Double duration) {
 		this.duration = duration;
 	}
 
