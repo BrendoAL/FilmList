@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.filmList.FmList.dto.FilmDTO;
 import com.filmList.FmList.dto.FilmMinDTO;
 import com.filmList.FmList.enteties.Film;
+import com.filmList.FmList.projections.FilmMinProjection;
 import com.filmList.FmList.repositories.FilmRepository;
 
 @Service
@@ -26,6 +27,12 @@ public class FilmService {
 	@Transactional(readOnly = true)
 	public List<FilmMinDTO> findAll() {
 		List<Film> result = filmRepository.findAll();
+		return result.stream().map(x -> new FilmMinDTO(x)).toList();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<FilmMinDTO> findByList(Long ListId) {
+		List<FilmMinProjection> result = filmRepository.searchBylist(ListId);
 		return result.stream().map(x -> new FilmMinDTO(x)).toList();
 	}
 }

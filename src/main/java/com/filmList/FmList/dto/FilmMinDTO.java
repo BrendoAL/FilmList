@@ -1,6 +1,7 @@
 package com.filmList.FmList.dto;
 
 import com.filmList.FmList.enteties.Film;
+import com.filmList.FmList.projections.FilmMinProjection;
 
 public class FilmMinDTO {
 	
@@ -19,6 +20,14 @@ public class FilmMinDTO {
 		year = entity.getYear();
 		imgUrl = entity.getImgUrl();
 		shortDescription = entity.getShortDescription();
+	}
+	
+	public FilmMinDTO(FilmMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getYear(); 
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
 	}
 
 	public Long getId() {
